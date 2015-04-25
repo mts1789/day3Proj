@@ -14,6 +14,9 @@ namespace MVC5Course.Controllers
     {
         private FabricsEntities db = new FabricsEntities();
 
+        ClientRepository repo = RepositoryHelper.GetClientRepository();
+
+
         public ActionResult Login()
         {
             return View();
@@ -28,7 +31,9 @@ namespace MVC5Course.Controllers
         // GET: Clients
         public ActionResult Index()
         {
-            var client = db.Client.Include(c => c.Occupation).Take(10);
+            //var client = db.Client.Include(c => c.Occupation).Take(10);
+            var client = repo.All().Take(10);
+
             return View(client.ToList());
         }
 
@@ -39,7 +44,9 @@ namespace MVC5Course.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Client client = db.Client.Find(id);
+            //Client client = db.Client.Find(id);
+            //var client = repo.All().Where(p => p.ClientId == id).FirstOrDefault();
+            var client = repo.Find(id.Value);
             if (client == null)
             {
                 return HttpNotFound();

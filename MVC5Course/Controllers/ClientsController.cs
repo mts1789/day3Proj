@@ -10,13 +10,25 @@ using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
 {
-    public class ClientsController : Controller
+    public class ClientsController :baseController
     {
         //private FabricsEntities db = new FabricsEntities();
         //ClientRepository repo = new ClientRepository();
         ClientRepository repo = RepositoryHelper.GetClientRepository();
         //使用NEW 並無CONTEXT也就是未做完完整步奏。使用HELPER則可將步驟完整
 
+#if DEBUG
+
+        public ActionResult debug()
+        {
+            return View();
+        }
+       
+        public ActionResult yy()
+        {
+            return View();
+        }
+#endif
         public ActionResult Login()
         {            
             return View();

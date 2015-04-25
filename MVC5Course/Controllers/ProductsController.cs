@@ -10,14 +10,22 @@ using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : baseController
     {
         private FabricsEntities db = new FabricsEntities();
 
         // GET: Products
         public ActionResult Index()
         {
-            return View(db.Product.ToList());
+            //return View(db.Product.ToList());
+            //return PartialView(db.Product.ToList());
+            //return View("viewpro"); 
+            return Content("abc",)
+        }
+
+        public ActionResult ii()
+        {
+            return View();
         }
 
         // GET: Products/Details/5

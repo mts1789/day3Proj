@@ -5,9 +5,13 @@ namespace MVC5Course.Models
     using System.ComponentModel.DataAnnotations;
     
     [MetadataType(typeof(ProductMetaData))]
-    public partial class Product
-    {
-    }
+    //public partial class Product:IValidatableObject
+    //{
+    //    //public IEnumerable<ValidationResult> Validate(ValidationContext vc)
+    //    //{
+
+    //    //}
+    //}
     
     public partial class ProductMetaData
     {
@@ -16,6 +20,7 @@ namespace MVC5Course.Models
         
         [StringLength(80, ErrorMessage="欄位長度不得大於 80 個字元")]
         public string ProductName { get; set; }
+        [myValidation(ErrorMessage="不可奇數")]
         public Nullable<decimal> Price { get; set; }
         public Nullable<bool> Active { get; set; }
         public Nullable<decimal> Stock { get; set; }

@@ -29,7 +29,7 @@ namespace MVC5Course.Controllers
         // GET: Clients
         public ActionResult Index()
         {
-            var client = repo.All().Take(10);
+            var client = repo.在首頁取得客戶資料(10);
 
             return View(client.ToList());
         }

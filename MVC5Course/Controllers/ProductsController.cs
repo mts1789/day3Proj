@@ -20,7 +20,7 @@ namespace MVC5Course.Controllers
             //return View(db.Product.ToList());
             //return PartialView(db.Product.ToList());
             //return View("viewpro"); 
-            return Content("abc",)
+            return Content("abc",);
         }
 
         public ActionResult ii()

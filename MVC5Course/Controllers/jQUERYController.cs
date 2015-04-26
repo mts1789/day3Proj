@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,6 +10,27 @@ namespace MVC5Course.Controllers
     public class jQUERYController : Controller
     {
         // GET: jQUERY
+        public ActionResult file1()
+        {
+
+            return File(Server.MapPath("~\\Content\\Site.css"), "text/palin");
+        }
+
+        public ActionResult file2()
+        {
+            return File(Server.MapPath("~\\Content\\Site.css"), "text/html");
+        }
+        public ActionResult file3()
+        {
+            return File(Server.MapPath("~\\Content\\Site.css"), "text/palin","file6.aspx");
+        }
+        // public ActionResult file4()
+        //{
+        //    WebClient wc = new WebClient();
+        //    var ff= wc.DownloadFile("https://t.kfs.io/upload_images/31696/miniASP_final_LOGO_cs4-02_promote.jpg", "fx.jpg");
+
+        //    return File("https://t.kfs.io/upload_images/31696/miniASP_final_LOGO_cs4-02_promote.jpg", "image/png", "file6.aspx");
+        //}
         
         public ActionResult Index()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC5Course.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,9 +8,29 @@ using System.Web.Mvc;
 
 namespace MVC5Course.Controllers
 {
-    public class jQUERYController : Controller
+    public class jQUERYController : baseController
     {
+
         // GET: jQUERY
+        public ActionResult dir2()
+        {
+            ViewData["aa"] = "a1";
+
+            ViewBag.bb = "b1";
+            TempData["cc"] = "c1";
+
+            //return RedirectToActionPermanent("index","clients");
+
+            return RedirectToAction("dd5");
+        }
+
+        public ActionResult dd5()
+        {
+            ViewBag.aa = ViewData["aa"];
+            ViewBag.ii = ViewBag.bb;
+            ViewBag.cc = TempData["cc"];
+            return View();
+        }
         public ActionResult file1()
         {
 
@@ -19,6 +40,15 @@ namespace MVC5Course.Controllers
         public ActionResult file2()
         {
             return File(Server.MapPath("~\\Content\\Site.css"), "text/html");
+        }
+        public ActionResult json1()
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+             var data= db.Product.Take(5);
+
+             return Json(data, JsonRequestBehavior.AllowGet);
+            
+            //return View();
         }
         public ActionResult file3()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVC5Course.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace MVC5Course.Controllers
 {
     public class baseController : Controller
     {
+        public FabricsEntities db = new FabricsEntities();
 #if DEBUG
         // GET: base
         public ActionResult Index()

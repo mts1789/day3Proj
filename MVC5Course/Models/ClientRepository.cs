@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using PagedList;
+using PagedList.Mvc;
 	
 namespace MVC5Course.Models
 {   
@@ -8,7 +10,9 @@ namespace MVC5Course.Models
 	{
         public override IQueryable<Client> All()
         {
-            return base.All().Where(x => !x.IsActive);
+            //return base.All().Where(x => !x.IsActive);
+            return base.All().Where(x => !x.IsActive).OrderBy(p => p.ClientId);
+        
         }
 
         public Client Find(int id)

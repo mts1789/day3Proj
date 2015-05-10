@@ -1,0 +1,22 @@
+﻿@{
+    int[] a = new int[] { 1, 2, 3, 4, 5 };
+    foreach(var ii in a)
+    { 
+        @ii
+    }
+    <br /><br />
+    
+    foreach (var ii in a)
+    {
+       @ii <a>  </a>      
+    }
+}
+<br /><br />
+<ul>
+    @foreach (var ii in a)
+    {
+    
+    <li>@ii</li>
+
+    }    
+</ul>

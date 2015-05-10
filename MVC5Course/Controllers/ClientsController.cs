@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5Course.Models;
+using MVC5Course.attribute;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MVC5Course.Controllers
 {
@@ -41,16 +44,20 @@ namespace MVC5Course.Controllers
         }
 
         // GET: Clients
-        public ActionResult Index()
+        [shareData]
+        public ActionResult Index(int pageNo=1)
         {
+            ViewBag.Message = "123456.";
             //var client = db.Client.Include(c => c.Occupation).Take(10);
-            var client = repo.All().Take(10);
+            //var client = repo.All().Take(10);
+            var client = repo.All().ToPagedList(pageNo, 10);
             return View(client.ToList());
         }
 
         // GET: Clients/Details/5
         public ActionResult Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -62,6 +69,8 @@ namespace MVC5Course.Controllers
                 return HttpNotFound();
             }
             return View(client);
+
+
         }
         OccupationRepository repoOcc = RepositoryHelper.GetOccupationRepository();
         // GET: Clients/Create
@@ -129,6 +138,8 @@ namespace MVC5Course.Controllers
         // GET: Clients/Delete/5
         public ActionResult Delete(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
